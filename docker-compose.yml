@@ -1,4 +1,4 @@
-version: "3"
+version: '3'
 services:
   database:
     image: postgres
@@ -7,9 +7,17 @@ services:
     environment:
       POSTGRES_PASSWORD: secret
     ports:
-      - "5432:5432"
+      - '5432:5432'
     volumes:
       - pgdata:/var/lib/postgresql/data
+  mongo:
+    image: mongo
+    restart: always
+    volumes:
+      - mongodata:/data/db
+    ports:
+      - '27017:27017'
 
 volumes:
   pgdata:
+  mongodata:
